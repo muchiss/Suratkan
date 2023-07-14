@@ -18,7 +18,11 @@
                 <td>{{ $s->no_staff }}</td>
                 <td>{{ $s->nama_staff }}</td>
                 <td>{{ $s->alamat }}</td>
-                <td><a class="btn btn-secondary btn-sm" href="{{ url('/staff/'.$s->no_staff) }}">Detail</a></td>
+                <td>
+                    <a class="btn btn-secondary btn-sm" href="{{ url('/staff/'.$s->no_staff) }}">Detail</a>
+                    <a class="btn btn-warning btn-sm" href="{{ url('/staff/'.$s->no_staff.'/edit') }}">Ubah</a>
+                    <a class="btn btn-danger btn-sm" href="{{ url('/staff/'.$s->no_staff) }}">Hapus</a>
+                </td>
             </tr>
             @endforeach
         </tr>

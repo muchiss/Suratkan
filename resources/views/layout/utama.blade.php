@@ -10,6 +10,9 @@
 </head>
 <body>
     <div class="container py-5">
+        @if (Auth::check())
+        @include('bagian/menu')
+        @endif
         @include('bagian/pesan')
         @yield('konten')
     </div>
