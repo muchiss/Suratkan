@@ -31,10 +31,10 @@ Route::get('/kontak', [HalamanController::class, 'kontak']);
 
 // Route::get('/staff', [StaffController::class, 'index']);
 // Route::get('/staff/{id}', [StaffController::class, 'detail'])->where('id', '[0-9]+');
-Route::resource('staff', StaffController::class);
+Route::resource('staff', StaffController::class)->middleware('isLogin');
 
-Route::get('/sesi', [SessionController::class, 'index']);
-Route::post('/sesi/login', [SessionController::class, 'login']);
+Route::get('/sesi', [SessionController::class, 'index'])->middleware('isTamu');
+Route::post('/sesi/login', [SessionController::class, 'login'])->middleware('isTamu');
 Route::get('/sesi/logout', [SessionController::class, 'logout']);
-Route::get('/sesi/register', [SessionController::class, 'register']);
-Route::post('/sesi/create', [SessionController::class, 'create']);
+Route::get('/sesi/register', [SessionController::class, 'register'])->middleware('isTamu');
+Route::post('/sesi/create', [SessionController::class, 'create'])->middleware('isTamu');

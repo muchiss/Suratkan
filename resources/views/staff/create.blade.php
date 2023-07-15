@@ -1,8 +1,9 @@
 @extends('layout/utama')
 
 @section('konten')
+<a href="/staff" class="btn btn-dark btn-sm mb-2"><< Kembali </a>
 <p>
-    <h1>Tambahkan Data</h1>
+    <h2>Tambahkan Data</h2>
 </p>
 <form method="post" action="/staff">
     @csrf

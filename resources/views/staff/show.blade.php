@@ -2,7 +2,7 @@
 
 @section('konten')
 <div>
-    <a href="/staff" class="btn btn-danger btn-sm"><< Kembali </a>
+    <a href="/staff" class="btn btn-dark btn-sm"><< Kembali </a>
     <h1>{{ $data->nama_staff }}</h1>
     <p>
         <b>Nomor Staff</b> {{ $data->no_staff }}

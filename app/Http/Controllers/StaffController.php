@@ -51,6 +51,7 @@ class StaffController extends Controller
             'nama_staff' => $request->input('nama_staff'),
             'alamat' => $request->input('alamat')
         ];
+
         staff::create($data);
         return redirect('staff')->with('sukses', 'Data Berhasil di tambah!');
     }
@@ -69,6 +70,8 @@ class StaffController extends Controller
      */
     public function edit(string $id)
     {
+        $data = staff::where('no_staff', $id)->first();
+        return view('staff.edit')->with('data', $data);
     }
 
     /**
@@ -76,7 +79,21 @@ class StaffController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'nama_staff' => 'required',
+            'alamat' => 'required'
+        ], [
+            'nama_staff.required' => 'Nama Staff Belum di isi!',
+            'alamat.required' => 'Alamat Belum di isi!'
+        ]);
+
+        $data = [
+            'nama_staff' => $request->input('nama_staff'),
+            'alamat' => $request->input('alamat')
+        ];
+
+        staff::where('no_staff', $id)->update($data);
+        return redirect('/staff')->with('sukses', 'Data Iso Diubah!');
     }
 
     /**
@@ -84,6 +101,7 @@ class StaffController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        staff::where('no_staff', $id)->delete();
+        return redirect('/staff')->with('sukses', 'Data Iso Dihapus!');
     }
 }

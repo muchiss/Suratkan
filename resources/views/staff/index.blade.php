@@ -21,7 +21,11 @@
                 <td>
                     <a class="btn btn-secondary btn-sm" href="{{ url('/staff/'.$s->no_staff) }}">Detail</a>
                     <a class="btn btn-warning btn-sm" href="{{ url('/staff/'.$s->no_staff.'/edit') }}">Ubah</a>
-                    <a class="btn btn-danger btn-sm" href="{{ url('/staff/'.$s->no_staff) }}">Hapus</a>
+                    <form class="d-inline" action="{{ '/staff/'.$s->no_staff }}" method="post" onsubmit="return confirm('Yakin Mau Di Hapus?')">
+                    @csrf
+                    @method('DELETE')
+                    <button class="btn btn-danger btn-sm" >Hapus</button>
+                    </form>
                 </td>
             </tr>
             @endforeach
