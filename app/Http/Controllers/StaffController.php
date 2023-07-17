@@ -16,6 +16,7 @@ class StaffController extends Controller
         // $data = staff::all();
         $data = staff::orderBy('no_staff', 'asc')->paginate(5);
         return view('staff.index')->with('data', $data);
+        Session::put('last_activity', now());
     }
 
     /**

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
@@ -31,6 +32,8 @@ class SessionController extends Controller
         ];
 
         if (Auth::attempt($infologin)) {
+            // Login berhasil, simpan waktu login terakhir pada session
+            session(['last_login_time' => now()]);
             // return 'Sukses';
             return redirect('staff')->with('sukses', Auth::user()->name . ' Iso Login!');
         } else {
